@@ -1,5 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
+
 const gallery = document.querySelector(".gallery");
 
 gallery.insertAdjacentHTML("beforeend", createGalleryItemsMarkup(galleryItems));
@@ -31,7 +32,7 @@ function onOpenModalImg(evt) {
   const imgTargetGallery = evt.target.dataset.source;
   const instance = basicLightbox.create(
     `<div class="modal">
-        <img src = "${imgTargetGallery}" width="800" height="600">/>
+        <img src = "${imgTargetGallery}" width="800" height="600"/>
     </div>`
   );
 

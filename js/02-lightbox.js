@@ -13,7 +13,7 @@ function createGalleryItemsMarkup(galleryItems) {
           <img
             class="gallery__image"
             src="${preview}"
-            alt="${description}
+            alt="${description}"
           />
         </a></li>`;
     })

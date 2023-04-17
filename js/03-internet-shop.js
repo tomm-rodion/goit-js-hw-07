@@ -34,7 +34,8 @@ const markup = appleGadget
     <h2>${name}</h2>
     <p>${price}$</p>
     <div><button class = "js-add-gadget">Buy Now</button>
-    <button class = "js-favorites">Add to favorites</button></div>
+    <button class = "js-favorites">Add to favorites</button>
+    <button class = "js-delete" disabled = true >Delete</button></div>
     </li>`;
   })
   .join("");
@@ -48,18 +49,18 @@ const favorites = [];
 function onClick(evt) {
   if (evt.target.classList.contains("js-add-gadget")) {
     const idAddGadget = Number(evt.target.closest("li").dataset.id);
-    console.log(idAddGadget); // has id number add gadget
 
-    const currentGadget = appleGadget.find(({ id }) => id === idAddGadget);
-    console.log(currentGadget); //object search element in array appleGadget
+    const currentGadget = {
+      ...appleGadget.find(({ id }) => id === idAddGadget),
+    };
 
-    const inBucket = bucket.some(({ id }) => id === idAddGadget);
-    console.log(inBucket);
+    const inBucket = bucket.find(({ id }) => id === idAddGadget);
     if (!inBucket) {
       currentGadget.amount = 1;
       bucket.push(currentGadget);
+      evt.target.parentElement.lastElementChild.removeAttribute("disabled");
     } else {
-      currentGadget.amount += 1;
+      inBucket.amount += 1;
     }
   }
 
@@ -79,7 +80,18 @@ function onClick(evt) {
       );
     }
   }
-}
 
-console.log(bucket);
-console.log(favorites);
+  if (evt.target.classList.contains("js-delete")) {
+    const idDeleteElem = Number(evt.target.closest("li").dataset.id);
+    console.log("idDeleteElem", idDeleteElem);
+    const indexDeleteElem = bucket.findIndex(({ id }) => id === idDeleteElem);
+    console.log("indexDeleteElem:", indexDeleteElem);
+    if (indexDeleteElem !== -1) {
+      bucket.splice(indexDeleteElem, 1);
+
+      evt.target.setAttribute("disabled", true); //...element.setAttribute(name, value);
+    }
+  }
+  console.log(bucket);
+  console.log(favorites);
+}

@@ -51,21 +51,33 @@ function onClick(evt) {
     console.log(idAddGadget); // has id number add gadget
 
     const currentGadget = appleGadget.find(({ id }) => id === idAddGadget);
+    console.log(currentGadget); //object search element in array appleGadget
+
     const inBucket = bucket.some(({ id }) => id === idAddGadget);
     console.log(inBucket);
     if (!inBucket) {
-      appleGadget.query = 1;
+      currentGadget.amount = 1;
       bucket.push(currentGadget);
     } else {
-      appleGadget.query += 1;
+      currentGadget.amount += 1;
     }
   }
+
   if (evt.target.classList.contains("js-favorites")) {
-    const elemFavoritesGadget = Number(evt.target.closest("li").dataset.id);
-    const currentGadget = appleGadget.find(
-      ({ id }) => id === elemFavoritesGadget
+    const idFavoritGadget = Number(evt.target.closest("li").dataset.id);
+    const currentFavoritGadget = appleGadget.find(
+      ({ id }) => id === idFavoritGadget
     );
-    favorites.push(currentGadget);
+
+    const inFavorit = favorites.some(({ id }) => id === idFavoritGadget);
+
+    if (!inFavorit) {
+      favorites.push(currentFavoritGadget);
+    } else {
+      alert(
+        "The product has already been added to the list of favorite products! 🤗"
+      );
+    }
   }
 }
 

@@ -92,6 +92,6 @@ function onClick(evt) {
       evt.target.setAttribute("disabled", true); //...element.setAttribute(name, value);
     }
   }
-  console.log(bucket);
-  console.log(favorites);
+  // console.log(bucket);
+  // console.log(favorites);
 }

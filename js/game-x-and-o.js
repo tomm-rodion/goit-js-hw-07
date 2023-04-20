@@ -57,24 +57,24 @@ function searchWinner() {
     totalWinCombO = [];
     ///for2
     for (let j = 0; j <= userX.length; j++) {
-      console.log("for2");
       if (win[i].includes(userX[j])) {
         totalWinComb.push(userX[j]);
       }
     }
     if (totalWinComb.length === 3) {
       alert("The winner has been found XXX!!!)");
+      setTimeout(onRestart, 800);
       break;
     }
 
     for (let w = 0; w <= userO.length; w++) {
-      console.log("for3");
       if (win[i].includes(userO[w])) {
         totalWinCombO.push(userO[w]);
       }
     }
     if (totalWinCombO.length === 3) {
       alert("The winner has been found OOO!!!)");
+      setTimeout(onRestart, 800);
       break;
     }
   }
@@ -83,6 +83,8 @@ function searchWinner() {
 function onRestart() {
   content.innerHTML = createMarkup();
   player = "X";
+  userX = [];
+  userO = [];
 }
 
 console.log("X", userX);

@@ -80,7 +80,11 @@ function searchWinner() {
       break;
     }
   }
-  if (userX.concat(userO).length === 9) {
+  if (
+    userX.concat(userO).length === 9 &&
+    totalWinCombO.length !== 3 &&
+    totalWinComb.length !== 3
+  ) {
     alert("the winner is not determined, try again !🤞🙄");
     setTimeout(onRestart, 700);
   }

@@ -4,7 +4,6 @@ const btnRestart = document.querySelector(".js-restart");
 let player = "X";
 let userX = [];
 let userO = [];
-let totalStep = 0;
 
 const win = [
   [1, 2, 3],
@@ -31,9 +30,6 @@ content.addEventListener("click", onClick);
 btnRestart.addEventListener("click", onRestart);
 
 function onClick(evt) {
-  totalStep += 1;
-  console.log("totalStep:", totalStep);
-
   if (!evt.target.textContent) {
     evt.target.textContent = player;
     player = player === "X" ? "0" : "X";
@@ -84,10 +80,9 @@ function searchWinner() {
       break;
     }
   }
-  if (totalStep === 9) {
+  if (userX.concat(userO).length === 9) {
     alert("the winner is not determined, try again !🤞🙄");
-    setTimeout(onRestart, 1000);
-    totalStep = 0;
+    setTimeout(onRestart, 700);
   }
 }
 
@@ -96,7 +91,6 @@ function onRestart() {
   player = "X";
   userX = [];
   userO = [];
-  totalStep = 0;
 }
 
 console.log("X :", userX);

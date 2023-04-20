@@ -32,18 +32,18 @@ btnRestart.addEventListener("click", onRestart);
 
 function onClick(evt) {
   totalStep += 1;
+  console.log("totalStep:", totalStep);
+
   if (!evt.target.textContent) {
     evt.target.textContent = player;
     player = player === "X" ? "0" : "X";
     if (evt.target.textContent === "X") {
       userX.push(Number(evt.target.dataset.id));
-      //   totalStep += 1;
       if (userX.length >= 3) {
         searchWinner();
       }
     } else {
       userO.push(Number(evt.target.dataset.id));
-      //   totalStep += 1;
       if (userO.length >= 3) {
         searchWinner();
       }
@@ -96,10 +96,11 @@ function onRestart() {
   player = "X";
   userX = [];
   userO = [];
+  totalStep = 0;
 }
 
-console.log("X", userX);
-console.log("O", userO);
+console.log("X :", userX);
+console.log("O :", userO);
 
 //   if (res.length === 3) {
 //     console.log(final);

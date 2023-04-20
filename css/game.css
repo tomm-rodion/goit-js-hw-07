@@ -4,7 +4,7 @@
 }
 
 .content {
-  width: 156px;
+  width: 152px;
   border: 1px solid black;
   margin: 0 auto;
 }
@@ -18,7 +18,8 @@
   font-size: 26px;
   border: 1px solid black;
   cursor: pointer;
-  vertical-align: background 0.1s;
+  vertical-align: middle;
+  transition: background 0.1s;
 }
 
 .item:hover {

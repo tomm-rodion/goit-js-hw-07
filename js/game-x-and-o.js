@@ -1,8 +1,10 @@
 const content = document.querySelector(".content");
 const btnRestart = document.querySelector(".js-restart");
+
 let player = "X";
 let userX = [];
 let userO = [];
+let totalStep = 0;
 
 const win = [
   [1, 2, 3],
@@ -14,6 +16,7 @@ const win = [
   [1, 5, 9],
   [3, 5, 7],
 ];
+
 function createMarkup() {
   let markup = "";
   for (let i = 1; i <= 9; i++) {
@@ -28,16 +31,19 @@ content.addEventListener("click", onClick);
 btnRestart.addEventListener("click", onRestart);
 
 function onClick(evt) {
+  totalStep += 1;
   if (!evt.target.textContent) {
     evt.target.textContent = player;
     player = player === "X" ? "0" : "X";
     if (evt.target.textContent === "X") {
       userX.push(Number(evt.target.dataset.id));
+      //   totalStep += 1;
       if (userX.length >= 3) {
         searchWinner();
       }
     } else {
       userO.push(Number(evt.target.dataset.id));
+      //   totalStep += 1;
       if (userO.length >= 3) {
         searchWinner();
       }
@@ -77,6 +83,11 @@ function searchWinner() {
       setTimeout(onRestart, 800);
       break;
     }
+  }
+  if (totalStep === 9) {
+    alert("the winner is not determined, try again !🤞🙄");
+    setTimeout(onRestart, 1000);
+    totalStep = 0;
   }
 }
 

@@ -125,3 +125,16 @@ console.log("O :", userO);
 //       alert("переможця знайдено, Вітаю містер Х");
 //       break;
 //     }
+
+//test JSON
+
+const settings = () =>
+  JSON.stringify({
+    theme: "dark",
+    isAuthenticated: true,
+    options: [1, 2, 3],
+  });
+
+localStorage.setItem("settings", settings());
+
+console.log(settings());

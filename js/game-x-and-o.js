@@ -100,31 +100,10 @@ function onRestart() {
 console.log("X :", userX);
 console.log("O :", userO);
 
-//   if (res.length === 3) {
-//     console.log(final);
-// };
-
-//  win.forEach((item) => {
-//    for (let i = 0; i <= userX.length; i++) {
-//      let res = item.reduce((acc, el) => {
-//        if (userX.includes(el)) {
-//          acc.push(el);
-//          console.log(acc);
-//        }
-//        return acc;
-//      }, []);
-//      console.log(res);
-//    }
-//  });
-
-//  if (
-//       win[i].includes(userX[0]) &&
-//       win[i].includes(userX[1]) &&
-//       win[i].includes(userX[2])
-//     ) {
-//       alert("переможця знайдено, Вітаю містер Х");
-//       break;
-//     }
+//return  : true || false
+function isWiner(arr) {
+  return win.some((item) => item.every((id) => arr.includes(id)));
+}
 
 //test JSON
 
